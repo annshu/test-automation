@@ -26,18 +26,18 @@ public class LoginLogoutTest {
 
     @Before
     public void setUp(){
-      //  String os = System.getProperty("os.name").toLowerCase();
+        String os = System.getProperty("os.name").toLowerCase();
 
         driver = new ChromeDriver();
 
-     /*   if (os.contains("mac")){
+        if (os.contains("mac")){
             System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/chromedriver");
         }
         else{
             System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir"+"\\chromedriver.exe"));
 
         }
-        */
+
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
@@ -54,7 +54,7 @@ public class LoginLogoutTest {
     }
 
 
-    @Ignore
+    //@Ignore
     @Test
     public void loginTest(){
         driver.findElement(className("login")).click();
@@ -68,24 +68,24 @@ public class LoginLogoutTest {
         Assert.assertThat(currentUrl, containsString("controller=my-account"));
     }
 
-    @Ignore
+    //@Ignore
     @Test
-    public void loginFlowTest(){
+    public void loginChainTest(){
         driver.findElement(className("login")).click();
         String currentUrl = driver.getCurrentUrl();
         Assert.assertThat(currentUrl, containsString("controller=authentication&back=my-account"));
 
         LoginPage loginPage = PageFactory.initElements(driver,LoginPage.class);
 
-        loginPage.enterUsername(email);
-        loginPage.enterPassword(password);
-        loginPage.clickSignInBtn();
+        loginPage
+                .enterUsername(email)
+                .enterPassword(password)
+                .clickSignInBtn();
 
         currentUrl = driver.getCurrentUrl();
         Assert.assertThat(currentUrl, containsString("controller=my-account"));
 
     }
-
 
     @Test
     public void logoutTest(){
