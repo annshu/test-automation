@@ -1,4 +1,4 @@
-package lesson07.a_proxy_elements_and_page_factory;
+package lesson09.a_proxy_elements_and_page_factory;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
