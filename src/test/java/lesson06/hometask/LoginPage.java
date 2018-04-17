@@ -12,8 +12,11 @@ package lesson06.hometask;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.WebDriver;
+import sun.rmi.runtime.Log;
 
-public class LoginPage {
+public class LoginPage  {
     @FindBy(className = "login")
     private WebElement loginLink;
 
@@ -26,19 +29,28 @@ public class LoginPage {
     @FindBy(id ="SubmitLogin")
     private WebElement loginBtn;
 
+    public WebDriver driver;
 
-    public void logIn(String username, String password){
+    public LoginPage(WebDriver driver) {
+        this.driver = driver;}
+
+
+
+    public AccountPage logIn(String username, String password){
         enterUsername(username);
         enterPassword(password);
         clickSignInBtn();
+        return new AccountPage(driver);
     }
 
-    public void enterUsername(String username){
+    public LoginPage enterUsername(String username){
         emailField.sendKeys(username);
+        return this;
     }
 
-    public void enterPassword(String password){
+    public LoginPage enterPassword(String password){
         passwordField.sendKeys(password);
+        return this;
     }
 
     public void clickSignInBtn(){

@@ -31,17 +31,19 @@ public class LoginTest {
 
     @Before
     public void setUp(){
-        String os = System.getProperty("os.name").toLowerCase();
+     //   String os = System.getProperty("os.name").toLowerCase();
 
         driver = new ChromeDriver();
 
-        if (os.contains("mac")){
+       /*
+       if (os.contains("mac")){
             System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/chromedriver");
         }
         else{
             System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir"+"\\chromedriver.exe"));
 
         }
+        */
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
