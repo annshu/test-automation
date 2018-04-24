@@ -24,9 +24,4 @@ public class StalenessOfElement implements ExpectedCondition<Boolean> {
         }
     }
 
-    /*
-    protected void stalenessOfElement(WebElement element){
-            assertThat(invisibilityOf(element));
-        }
-     */
 }
